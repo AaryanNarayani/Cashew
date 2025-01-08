@@ -2,6 +2,7 @@ import { useNavigate} from 'react-router-dom';
 
 import {githubLogo, reactLogo, rightArrow} from '../assets';
 import {ButtonHero} from '../components';
+import Portfolio from '../components/Portfolio';
 
 const HomePage = () => {
   const navigate = useNavigate();
@@ -48,6 +49,10 @@ const HomePage = () => {
         iconURL={rightArrow}
         roundedCorners="full"
       />
+      
+      <div className='mt-20 m-0'>
+        <Portfolio />
+      </div>
     </section>
     </div>
   );
