@@ -10,5 +10,4 @@ prodMiddlewares(app);
 routes(app);
 db();
 
-const port = process.env.PORT || 3000;
-app.listen(port, () => console.log(`Listening on Port ${port}...`));
+export default app;
