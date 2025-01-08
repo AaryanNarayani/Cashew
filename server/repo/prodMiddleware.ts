@@ -34,7 +34,7 @@ const limiter = rateLimit({
 });
 
 export const prodMiddlewares = (app:any) => {
-  app.use(cors(corsOptions));
+  app.use(cors());
   app.use(helmet());
   app.use(compression());
   app.use(hpp());
