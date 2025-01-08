@@ -7,7 +7,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "dev": "tsnd --respawn index.ts",
-    "build": "tsc"
+    "build": "npm install && tsc"
   },
   "repository": {
     "type": "git",
