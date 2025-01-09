@@ -9,7 +9,7 @@ import {ApiError} from '../utils/index.js';
 
 const corsOptions = {
   origin:
-    process.env.CORS_ORIGIN === '*' ? '*' : process.env.CORS_ORIGIN?.split(','),
+    process.env.CORS_ORIGIN === '*' ? '*' : process.env.CORS_ORIGIN,
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
   optionsSuccessStatus: 204,
@@ -34,7 +34,7 @@ const limiter = rateLimit({
 });
 
 export const prodMiddlewares = (app:any) => {
-  app.use(cors());
+  app.use(cors(corsOptions));
   app.use(helmet());
   app.use(compression());
   app.use(hpp());
