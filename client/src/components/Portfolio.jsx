@@ -310,7 +310,7 @@ export default function Portfolio({ config = defaultPortfolioConfig }) {
           <div className="px-4 w-full h-full overflow-hidden">
             <p className="relative m-0 text-base text-gray-500">
               It&apos;s been{" "}
-              <span className="text-white">{config?.experience} years</span> since I got
+              an year since I got
               into {config?.domain}. I&nbsp;now have clear principles, the main one
               being{" "}
               <span className="text-white">

@@ -1,11 +1,12 @@
-import {useForm} from 'react-hook-form';
+import {set, useForm} from 'react-hook-form';
 import {zodResolver} from '@hookform/resolvers/zod';
-import {useEffect} from 'react';
+import {useEffect, useState} from 'react';
 
 import {signInSchema, signUpSchema} from '../validators/formValidators';
 import {Input, Button, InputPassword} from './index';
 
 const AuthForm = ({onSubmit, buttonText, isSignUp}) => {
+  const [isLoading , setLoading] = useState(false);
   const {
     register,
     handleSubmit,
@@ -24,7 +25,9 @@ const AuthForm = ({onSubmit, buttonText, isSignUp}) => {
 
   const onSubmitHandler = async data => {
     try {
+      setLoading(true);
       await onSubmit(data);
+      setLoading(false);
       reset();
     } catch (error) {
       let errorMessage = 'An unexpected error occurred. Please try again.';
@@ -123,13 +126,20 @@ const AuthForm = ({onSubmit, buttonText, isSignUp}) => {
             )}
           </div>
         )}
-
-        <Button
-          label={buttonText}
-          fullWidth
-          roundedCorners="md"
-          isDisabled={!isValid}
-        />
+        {isLoading ? (
+          <div className="flex justify-center">
+            <div className="inline-block size-9 animate-spin rounded-full border-[5px] border-gray-200 border-t-primary dark:border-gray-600 dark:border-t-primary"></div>
+            <span className="sr-only">Loading...</span>
+          </div>
+        ) : (
+          <Button
+            label={buttonText}
+            fullWidth
+            roundedCorners="md"
+            isDisabled={!isValid}
+          />
+        )}
+        
       </div>
 
       {errors.message && (
